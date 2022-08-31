@@ -1,31 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { PortofolioComponent } from './pages/home/portofolio/portofolio.component'
-import { TodoComponent } from './pages/home/todo/todo.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) 
   },
   {
-    path: 'portofolio',
-    component: PortofolioComponent
-  },
-  {
-    path: 'todo',
-    component: TodoComponent
+    path: '**',
+    component: NotFoundComponent
   }
-  // {
-  //   path: 'todo',
-  //   component: 
-  // }
 ]
 
 @NgModule({
-  declarations: [],
   imports: [
     RouterModule.forRoot(routes)
   ],
